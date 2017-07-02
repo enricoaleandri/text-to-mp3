@@ -1,11 +1,11 @@
 {
   "name": "text-to-mp3",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Enrico Aleandri",
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "node textToMp3.js -t \"Ciao Mondo\" -f text.mp3"
   },
   "repository": {
     "type": "git",
