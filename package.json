@@ -1,0 +1,26 @@
+{
+  "name": "text-to-mp3",
+  "version": "1.0.0",
+  "author": "Enrico Aleandri",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/enricoaleandri/text-to-mp3"
+  },
+  "keywords": [
+    "translate",
+    "mp3",
+    "speach",
+    "text",
+    "text-to-mp3",
+    "google"
+  ],
+  "dependencies": {
+    "debug": "^2.6.8",
+    "request": "^2.81.0"
+  }
+}
