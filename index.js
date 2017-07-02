@@ -5,7 +5,17 @@ var debug = require("debug")(DEBUGNAME);
 
 var TextToMp3 = function () {
 
-  TextToMp3.prototype.attributes = {};
+  /**
+   *
+   * @type {{ie: string Cherset of text we are providing,
+    * client: string this must be tw-ob otherways google API will fail the call,
+     * tl: string this is the language of generated speech}}
+   */
+  TextToMp3.prototype.attributes = {
+    ie: "UTF-8",
+    client : "tw-ob",
+    tl : "It-it"
+  };
 
   TextToMp3.prototype.parse = function (text, callback) {
 
@@ -17,11 +27,16 @@ var TextToMp3 = function () {
     var fs = require('fs'),
       request = require('request');
 
-    var path = "http://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=It-it";
-    path += "&q="+text;
-    path += "&textLen="+text.length;
+    var path = "http://translate.google.com/translate_tts?";
+    var keysAtt = Object.keys(this.attributes);
+    for(var i = 0; i< keysAtt.length ; i++){
+      path += keysAtt[i] + "=" + this.attributes[keysAtt[i]]+"&";
+    }
+    path += "q="+text+"&";
+    path += "textLen="+text.length;
 
     debug("PATH", path);
+    var data = [];
     request
       .get({
         headers: {
@@ -30,20 +45,21 @@ var TextToMp3 = function () {
         },
         uri: path,
         method: 'GET'
-      }
-      ,
-        function (error, response, body) {
-          if(error){
-            console.error(error);
-          }
-          if(response && response.statusCode == 200){
-            callback(body)
-          }
+      })
+      .on('data',function(chunk){
+        data.push(chunk);
+      })
+      .on('end',function(){
+        if(data)
+          callback(null, Buffer.concat(data));
+        else
+          callback("no data found");
       })
       .on('error', function(err) {
         // handle error
-        console.log(err);
-      });
+        callback(err, null)
+      })
+
   };
 };
 module.exports = new TextToMp3();

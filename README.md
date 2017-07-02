@@ -10,7 +10,7 @@ On **textToMp3.js** there is a bash usage of libray, call it with -? for help in
 
 ```
 npm install
-node textToMp3.js -m "Texto to generate speech" [-f ] 
+node textToMp3.js -t "Texto to generate speech" -f "filenameSpeech.mp3"
 ```
 
 
