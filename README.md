@@ -1,14 +1,79 @@
-## Description
+#Text to MP3
 This is a Simple script to generate MP3 from text, using public Google Translate API, so it have the limits of public usage 
 
-On **textToMp3.js** there is a bash usage of libray, call it with -? for help information
+[![npm version](https://badge.fury.io/js/text-to-mp3.svg)](https://badge.fury.io/js/text-to-mp3)
+[![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
+
+## Installation
+
+Install this module through npm or clone it:
+
+```javascript
+npm install --save text-to-mp3
+```
+
+## Usage
+
+### Get MP3 - callback
+```javascript
+var txtomp3 = require("text-to-mp3");
+
+txtomp3.getMp3("Ciao Mondo", function(err, binaryStream){
+  if(err){
+    console.log(err);
+    return;
+  }
+  var file = fs.createWriteStream("FileName.mp3"); // write it down the file
+  file.write(binaryStream);
+  file.end();
+});
+```
+### Get MP3 - Promise
+```javascript
+var txtomp3 = require("text-to-mp3");
+
+txtomp3.getMp3("Ciao Mondo").then(function(binaryStream){
+  var file = fs.createWriteStream("FileName.mp3"); // write it down the file
+  file.write(binaryStream);
+  file.end();
+})
+.catch(function(err){
+  console.log("Error", err);
+});
+```
 
 
+### Save MP3 - callback
+```javascript
+var txtomp3 = require("text-to-mp3");
 
-## Run It
+txtomp3.saveMP3("Ciao Mondo", "FileName.mp3", function(err, absoluteFilePath){
+  if(err){
+    console.log(err);
+    return;
+  }
+  console.log("File saved :", absoluteFilePath); //"File saved : /home/enrico/WebstormProjects/textToMp3/FileName.mp3"
+});
+```
+### Save MP3 - Promise
+```javascript
+var txtomp3 = require("text-to-mp3");
+
+//if you do not provide a mp3 extension, or you provide it wrong, it will automatically append.
+txtomp3.saveMP3("Ciao Mondo", "FileName").then(function(absoluteFilePath){ 
+  console.log("File saved :", absoluteFilePath); //"File saved : /home/enrico/WebstormProjects/textToMp3/FileName.mp3"
+})
+.catch(function(err){
+  console.log("Error", err);
+});
+```
+
+## Bash it
 
 
 ```
+git clone https://github.com/enricoaleandri/text-to-mp3.git 
+cd text-to-mp3
 npm install
 node textToMp3.js -t "Texto to generate speech" -f "filenameSpeech.mp3"
 ```
