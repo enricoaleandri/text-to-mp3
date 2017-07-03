@@ -62,4 +62,4 @@ var TextToMp3 = function () {
 
   };
 };
-module.exports = new TextToMp3();
+module.exports = TextToMp3;

@@ -4,7 +4,7 @@
  */
 
 
-var texttomp3 = require("./index");
+var TextToMp3 = require("./index");
 var fs = require('fs');
 
 
@@ -41,6 +41,7 @@ if(text.length > 200){ // check longness of text, because otherways google trans
 }
 
 //HERE WE GO
+var texttomp3 = new TextToMp3();
 texttomp3.parse(text, function(err, data){
   if(err){
     console.log(err);
