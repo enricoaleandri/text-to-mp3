@@ -3,6 +3,7 @@ This is a Simple script to generate MP3 from text, using public Google Translate
 
 [![npm version](https://badge.fury.io/js/text-to-mp3.svg)](https://badge.fury.io/js/text-to-mp3)
 [![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
+[![NPM](https://nodei.co/npm/text-to-mp3.png)](https://nodei.co/npm/text-to-mp3/)
 
 ## Installation
 
