@@ -1,0 +1,108 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@3.10.10
+3 info using node@v6.10.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/home/enrico/WebstormProjects/textToMp3',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /home/enrico/.npm/text-to-mp3/1.0.2/package.tgz not in flight; packing
+9 verbose correctMkdir /home/enrico/.npm correctMkdir not in flight; initializing
+10 info lifecycle text-to-mp3@1.0.2~prepublish: text-to-mp3@1.0.2
+11 silly lifecycle text-to-mp3@1.0.2~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/home/enrico/.npm/text-to-mp3/1.0.2/package.tgz',
+12 verbose tar pack   '/home/enrico/WebstormProjects/textToMp3' ]
+13 verbose tarball /home/enrico/.npm/text-to-mp3/1.0.2/package.tgz
+14 verbose folder /home/enrico/WebstormProjects/textToMp3
+15 verbose addLocalTarball adding from inside cache /home/enrico/.npm/text-to-mp3/1.0.2/package.tgz
+16 verbose correctMkdir /home/enrico/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd text-to-mp3@1.0.2
+18 verbose afterAdd /home/enrico/.npm/text-to-mp3/1.0.2/package/package.json not in flight; writing
+19 verbose correctMkdir /home/enrico/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /home/enrico/.npm/text-to-mp3/1.0.2/package/package.json written
+21 silly publish { name: 'text-to-mp3',
+21 silly publish   version: '1.0.2',
+21 silly publish   author: { name: 'Enrico Aleandri' },
+21 silly publish   license: 'MIT',
+21 silly publish   main: 'index.js',
+21 silly publish   scripts: { test: 'node textToMp3.js -t "Ciao Mondo" -f text.mp3' },
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git+https://github.com/enricoaleandri/text-to-mp3.git' },
+21 silly publish   keywords: [ 'translate', 'mp3', 'speach', 'text', 'text-to-mp3', 'google' ],
+21 silly publish   dependencies: { debug: '^2.6.8', request: '^2.81.0' },
+21 silly publish   readme: '#Text to MP3\nThis is a Simple script to generate MP3 from text, using public Google Translate API, so it have the limits of public usage \n\n[![npm version](https://badge.fury.io/js/text-to-mp3.svg)](https://badge.fury.io/js/text-to-mp3)\n[![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)\n[![NPM](https://nodei.co/npm/text-to-mp3.png)](https://nodei.co/npm/text-to-mp3/)\n\n## Installation\n\nInstall this module through npm or clone it:\n\n```javascript\nnpm install --save text-to-mp3\n```\n\n## Usage\n\n### Get MP3 - callback\n```javascript\nvar txtomp3 = require("text-to-mp3");\n\ntxtomp3.getMp3("Ciao Mondo", function(err, binaryStream){\n  if(err){\n    console.log(err);\n    return;\n  }\n  var file = fs.createWriteStream("FileName.mp3"); // write it down the file\n  file.write(binaryStream);\n  file.end();\n});\n```\n### Get MP3 - Promise\n```javascript\nvar txtomp3 = require("text-to-mp3");\n\ntxtomp3.getMp3("Ciao Mondo").then(function(binaryStream){\n  var file = fs.createWriteStream("FileName.mp3"); // write it down the file\n  file.write(binaryStream);\n  file.end();\n})\n.catch(function(err){\n  console.log("Error", err);\n});\n```\n\n\n### Save MP3 - callback\n```javascript\nvar txtomp3 = require("text-to-mp3");\n\ntxtomp3.saveMP3("Ciao Mondo", "FileName.mp3", function(err, absoluteFilePath){\n  if(err){\n    console.log(err);\n    return;\n  }\n  console.log("File saved :", absoluteFilePath); //"File saved : /home/enrico/WebstormProjects/textToMp3/FileName.mp3"\n});\n```\n### Save MP3 - Promise\n```javascript\nvar txtomp3 = require("text-to-mp3");\n\n//if you do not provide a mp3 extension, or you provide it wrong, it will automatically append.\ntxtomp3.saveMP3("Ciao Mondo", "FileName").then(function(absoluteFilePath){ \n  console.log("File saved :", absoluteFilePath); //"File saved : /home/enrico/WebstormProjects/textToMp3/FileName.mp3"\n})\n.catch(function(err){\n  console.log("Error", err);\n});\n```\n\n## Bash it\n\n\n```\ngit clone https://github.com/enricoaleandri/text-to-mp3.git \ncd text-to-mp3\nnpm install\nnode textToMp3.js -t "Texto to generate speech" -f "filenameSpeech.mp3"\n```\n\n\n\n## Contributing\n \n1. Fork it!\n2. Create your feature branch: `git checkout -b my-new-feature`\n3. Commit your changes: `git commit -am \'Add some feature\'`\n4. Push to the branch: `git push origin my-new-feature`\n5. Submit a pull request :D\n \n \n## Credits\n \nLead Developer - Enrico Aleandri (@enricoaleandri)\n \n## License\n \nThe MIT License (MIT)\n\nCopyright (c) 2017 Enrico Aleandri\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: '30b190cc96ab24bd669a966a88c243e14b6a5aea',
+21 silly publish   description: 'This is a Simple script to generate MP3 from text, using public Google Translate API, so it have the limits of public usage',
+21 silly publish   bugs: { url: 'https://github.com/enricoaleandri/text-to-mp3/issues' },
+21 silly publish   homepage: 'https://github.com/enricoaleandri/text-to-mp3#readme',
+21 silly publish   _id: 'text-to-mp3@1.0.2',
+21 silly publish   _shasum: 'c80d540a1ffa4e8b612d849f4dbcea51d85e7dfb',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name text-to-mp3
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'text-to-mp3',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   escapedName: 'text-to-mp3',
+26 silly mapToRegistry   name: 'text-to-mp3',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri https://registry.npmjs.org/text-to-mp3
+28 verbose publish registryBase https://registry.npmjs.org/
+29 silly publish uploading /home/enrico/.npm/text-to-mp3/1.0.2/package.tgz
+30 verbose request uri https://registry.npmjs.org/text-to-mp3
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 12:44:39 PM
+33 verbose request using bearer token for auth
+34 verbose request id 891f718609f4bcbc
+35 http request PUT https://registry.npmjs.org/text-to-mp3
+36 http 403 https://registry.npmjs.org/text-to-mp3
+37 verbose headers { 'content-type': 'application/json',
+37 verbose headers   'cache-control': 'max-age=300',
+37 verbose headers   'content-length': '95',
+37 verbose headers   'accept-ranges': 'bytes',
+37 verbose headers   date: 'Tue, 04 Jul 2017 10:44:41 GMT',
+37 verbose headers   via: '1.1 varnish',
+37 verbose headers   connection: 'keep-alive',
+37 verbose headers   'x-served-by': 'cache-hhn1549-HHN',
+37 verbose headers   'x-cache': 'MISS',
+37 verbose headers   'x-cache-hits': '0',
+37 verbose headers   'x-timer': 'S1499165080.036354,VS0,VE1152',
+37 verbose headers   vary: 'Accept-Encoding' }
+38 verbose request invalidating /home/enrico/.npm/registry.npmjs.org/text-to-mp3 on PUT
+39 error publish Failed PUT 403
+40 verbose stack Error: "You cannot publish over the previously published version 1.0.2." : text-to-mp3
+40 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:302:12)
+40 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:290:14)
+40 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:210:14)
+40 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:187:22)
+40 verbose stack     at emitTwo (events.js:106:13)
+40 verbose stack     at Request.emit (events.js:191:7)
+40 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1048:10)
+40 verbose stack     at emitOne (events.js:96:13)
+40 verbose stack     at Request.emit (events.js:188:7)
+40 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:969:12)
+41 verbose statusCode 403
+42 verbose pkgid text-to-mp3
+43 verbose cwd /home/enrico/WebstormProjects/textToMp3
+44 error Linux 4.4.0-83-generic
+45 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "publish"
+46 error node v6.10.0
+47 error npm  v3.10.10
+48 error code E403
+49 error "You cannot publish over the previously published version 1.0.2." : text-to-mp3
+50 error If you need help, you may report this error at:
+50 error     <https://github.com/npm/npm/issues>
+51 verbose exit [ 1, true ]
