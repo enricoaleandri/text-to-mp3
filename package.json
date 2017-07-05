@@ -1,7 +1,7 @@
 {
   "name": "text-to-mp3",
   "version": "1.0.3",
-  "author": "Enrico Aleandri",
+  "author": "Enrico Aleandri <aleandrienrico@gmail.com>",
   "license": "MIT",
   "main": "index.js",
   "scripts": {
