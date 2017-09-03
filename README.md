@@ -3,15 +3,25 @@ This is a Simple script to generate MP3 from text, using public Google Translate
 
 [![NPM](https://nodei.co/npm/text-to-mp3.png)](https://nodei.co/npm/text-to-mp3/)
 
+
 [![npm version](https://badge.fury.io/js/text-to-mp3.svg)](https://badge.fury.io/js/text-to-mp3)
+[![Bower version](https://badge.fury.io/bo/text-to-mp3.svg)](http://badge.fury.io/bo/text-to-mp3)
 [![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
 
-## Installation
+## Installation by NPM 
 
-Install this module through npm or clone it:
+Install this module through npm :
 
 ```javascript
 npm install --save text-to-mp3
+```
+
+## Installation by Bower 
+
+Install this module through bower repository:
+
+```javascript
+bower install --save text-to-mp3
 ```
 
 ## Usage
