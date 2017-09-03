@@ -1,7 +1,7 @@
 "use strict";
 
 var DEBUGNAME = __filename.slice(__dirname.length + 1, -3);
-var debug = require("debug")(DEBUGNAME);
+//var debug = require("debug")(DEBUGNAME);
 var fs = require('fs');
 
 const BASE_URL = "http://translate.google.com/translate_tts?";
@@ -75,7 +75,7 @@ var TextToMp3 = function () { }
         callback("missing required params");
       }
       var path = _parseURL(BASE_URL, text);
-      debug("PATH", path);
+      //debug("PATH", path);
       request
         .get({
           headers: {
@@ -103,7 +103,7 @@ var TextToMp3 = function () { }
           reject("missing required params");
         }
         var path = _parseURL(BASE_URL, text);
-        debug("PATH", path);
+        //debug("PATH", path);
         request
           .get({
             headers: {
