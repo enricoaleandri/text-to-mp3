@@ -80,6 +80,36 @@ txtomp3.saveMP3("Ciao Mondo", "FileName").then(function(absoluteFilePath){
 });
 ```
 
+### Language Options
+An optional object can be provided to allow for the use of other languages provided by the Google Translate API. see Language Codes avaliable here: https://ctrlq.org/code/19899-google-translate-languages
+```javascript
+var txtomp3 = require("text-to-mp3");
+
+var options = {
+  //the property tl of the object provided must be a string and follow the 2 digit iso short code used by the Google Translate API
+  tl: 'pt'
+}
+
+txtomp3.saveMP3("Ciao Mondo", "FileName.mp3", options,function(err, absoluteFilePath){
+  if(err){
+    console.log(err);
+    return;
+  }
+  console.log("File saved :", absoluteFilePath); //"File saved : /home/enrico/WebstormProjects/textToMp3/FileName.mp3"
+});
+
+//or
+
+txtomp3.getMp3("Ciao Mondo", options).then(function(binaryStream){
+  var file = fs.createWriteStream("FileName.mp3"); // write it down the file
+  file.write(binaryStream);
+  file.end();
+})
+.catch(function(err){
+  console.log("Error", err);
+});
+```
+
 ## Bash it
 
 

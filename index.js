@@ -41,8 +41,23 @@ var TextToMp3 = function () { }
   };
   TextToMp3.prototype.saveMP3 = function(text, fileName, callback){
 
+    var optionsModel = {
+      tl: 'it'
+    }
+    var options;
+    var callback;
+
+    if (typeof arguments[2] == "object") {
+      options = arguments[2];
+      callback = arguments[3];
+    } else {
+      options = {};
+      callback = arguments[2];
+    }
+    options = Object.assign(optionsModel, options)
+
     if(typeof callback !== 'undefined' && typeof(callback) == 'function'){
-      TextToMp3.prototype.getMp3(text,function(err,data){
+      TextToMp3.prototype.getMp3(text,options,function(err,data){
         if(err)
           return callback(err);
 
@@ -51,7 +66,7 @@ var TextToMp3 = function () { }
       });
     }else{
       return new Promise(function(resolve, reject) {
-        TextToMp3.prototype.getMp3(text).then(function (data) {
+        TextToMp3.prototype.getMp3(text,options).then(function (data) {
           var file = _writeFile(fileName, data);
           resolve(fs.realpathSync(file));
         }).catch(function(err){
@@ -59,13 +74,30 @@ var TextToMp3 = function () { }
         });
       });
     }
-
   };
 
   TextToMp3.prototype.getMp3 = function (text, callback) {
 
     var fs = require('fs'),
       request = require('request');
+
+    var optionsModel = {
+      tl: 'it'
+    }
+    var options;
+    var callback;
+
+    if (typeof arguments[1] == "object") {
+      options = arguments[1];
+      callback = arguments[2];
+    } else {
+      options = {};
+      callback = arguments[1];
+    }
+
+    options = Object.assign(optionsModel, options)
+
+    TextToMp3.prototype.attributes.tl = options.tl
 
     var data = [];
 
@@ -125,8 +157,6 @@ var TextToMp3 = function () { }
           });
       });
     }
-
   };
-
 
 module.exports = new TextToMp3();
