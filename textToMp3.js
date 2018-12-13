@@ -41,7 +41,10 @@ if(text.length > 200){ // check longness of text, because otherways google trans
 }
 
 //HERE WE GO
-texttomp3.getMp3(text, function(err, data){
+options = {
+  tl: 'it'
+}
+texttomp3.getMp3(text, options, function(err, data){
   if(err){
     console.log(err);
     return;
