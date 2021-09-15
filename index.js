@@ -25,7 +25,7 @@ var TextToMp3 = function () { }
     for(var i = 0; i< keysAtt.length ; i++){
       path += keysAtt[i] + "=" + TextToMp3.prototype.attributes[keysAtt[i]]+"&";
     }
-    path += "q="+text+"&";
+    path += "q="+encodeURIComponent(text)+"&";
     path += "textLen="+text.length;
 
     return path;
